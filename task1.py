@@ -14,14 +14,17 @@ def process_request():
     if not queue.empty():            
         request = queue.get()       
         print(f"Processing request: {request}")
-        # Імітація обробки заявки
+
         time.sleep(random.uniform(0.5, 2))
         print(f"Request {request} processed.")
     else:
         print("Queue is empty. No requests to process.")
 
+try:
+    while True:
+        generate_request()      
+        process_request()       
+        time.sleep(1)   
+except KeyboardInterrupt:
+    print("Program terminated by user.") 
 
-while True:
-    generate_request()      
-    process_request()       
-    time.sleep(1)      
